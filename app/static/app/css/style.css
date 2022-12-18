@@ -1,0 +1,81 @@
+.owl-carousel .item{
+ /* border: 1px solid black; */
+ font-size: 24px;
+ text-align: center;
+ margin-top: 20px;;
+}
+
+.owl-next{
+ float:right;
+}
+.owl-prev{
+ float:left;
+}
+.owl-prev span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.owl-next span{
+ font-size: 24px;
+ font-weight: bold;
+}
+#slider-wrapper{
+max-width: 500px;
+display: flex;
+min-height: 100px;
+align-items: center;
+/* display: inline; */
+}
+
+#magnifying_area{
+  overflow: hidden;
+  position: relative;
+}
+
+#feature{
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+.arrow{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.arrow:hover{
+  opacity: .5;
+
+}
+#slider{
+  width: 440px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+.small-img-col{
+  flex-basis: 24%;
+  cursor: pointer;
+}
+.thumbnail{
+  object-fit: cover;
+  max-width: 180px;
+  max-width: 80px;
+  cursor: pointer;
+  margin: 5px;
+  border: 2px solid black;
+  opacity: 0.5;
+}
+.thumbnail :hover{
+  opacity: 1;
+}
+.active{
+  opacity: 1;
+}
+

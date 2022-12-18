@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Product Detail{% endblock title %}
+{% block main-content %}
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-5 text-center align-self-center">
+      <div id="magnifying_area">
+        <img src="{{ product.product_image.url }}" alt="" width='60%' class="img-fluid img-thumbnail" id="featured">
+      </div>
+      <div id="slider-wrapper">
+        <button id="slideleft"><i class="fas fa-angle-left arrow"></i></button>
+        <div id="slider">
+          {% for image in images%}
+          <img src="{{ image.images.url }}" alt="" class="thumbnail active">
+          {% endfor %}
+        </div>
+        <button id="slideright"><i class="fas fa-angle-right arrow"></i></button>
+      </div>
+    </div>
+    <div class="col-sm-6 offset-sm-1">
+      <h2>Product Title: {{product.title}}</h2>
+      <hr>
+      <p>{{product.description}}</p> <br>
+      <h4>Rs. {{product.discounted_price}}<small
+          class="fw-light text-decoration-line-through m-2">{{product.selling_price }}</small></h4> <br>
+      {% if request.user.is_authenticated %}
+      {% if item_in_cart %}
+      <a href="{% url 'cart' %}" class="btn btn-warning shadow px-5 py-2">Go to Cart</a>
+      {% else %}
+      <a href="{% url 'add-to-cart' prod_id=product.id %}" class="btn btn-primary shadow px-5 py-2">Add to Cart</a>
+      {% endif %}
+      {%endif%}
+      {% if not request.user.is_authenticated %}
+      <a href="{% url 'add-to-cart' prod_id=product.id %}" class="btn btn-primary shadow px-5 py-2">Add to Cart</a>
+      {%endif%}
+      <a href="{% url 'buy-now' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
+      <h5 class="mt-5">Available Offers</h5>
+      <ul>
+        <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>
+        <li>Special Price Get extra ₹3000 off (price inclusive of discount)</li>
+        <li>No cost EMI ₹1,667/month. Standard EMI also available</li>
+        <li>Partner Offer ₹2000 Flipkart Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}
